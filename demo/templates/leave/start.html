@@ -1,0 +1,34 @@
+{% extends 'viewflow/flow/start.html' %}
+{% load viewflow material_form material_frontend %}
+{% load i18n viewflow material_form %}
+
+{% block left-panel %}
+<div class="left-panel">
+    <div class="card">
+        <form role="form" method="POST" enctype="multipart/form-data">
+            <div class="card-content">
+                <div class="card-title">
+                    {{ activation.task.summary|default:activation.task.flow_task }}
+                    <h6>{{ activation.process.summary }}</h6>
+                </div>
+                {% block task_form %}
+                {% csrf_token %}
+                {% form form=form %}
+                {# 修改field    {% part form.position prefix %}<ul><li>1</li><li>2</li></ul>{% endpart %}#}
+                {% endform %}
+                {{ activation.management_form }}
+                {% endblock %}
+            </div>
+            <div class="card-action">
+                <div class="row">
+                    {% block task_actions %}
+                    <div class="right-align">
+                        <button type="submit" name="_done" class="btn primary white-text">开始</button>
+                    </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
