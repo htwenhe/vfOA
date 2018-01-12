@@ -23,16 +23,16 @@ vfOA是基于Viewflow的OA演示系统，能够快速实现数据的CURD以及�
 
 ## Photos:
 编辑界面
-![编辑界面](img/1.png)
+![编辑界面](https://github.com/htwenhe/vfOA/blob/master/img/1.png)
 
 列表页面
-![列表页面](img/2.png)
+![列表页面](https://github.com/htwenhe/vfOA/blob/master/img/2.png)
 
 代办事项
-![代办事项](img/3.png)
+![代办事项](https://github.com/htwenhe/vfOA/blob/master/img/3.png)
 
 流程处理
-![流程处理](img/4.png)
+![流程处理](https://github.com/htwenhe/vfOA/blob/master/img/4.png)
 
 流程信息展示
-![流程信息展示](img/5.png)
+![流程信息展示](https://github.com/htwenhe/vfOA/blob/master/img/5.png)
