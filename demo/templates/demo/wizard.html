@@ -1,0 +1,132 @@
+{% load static %}
+<script type="text/javascript">
+var tour;
+
+tour = new Shepherd.Tour({
+  defaults: {
+    classes: 'shepherd-element shepherd-open shepherd-theme-arrows',
+  }
+});
+
+if($.cookie('examples.first_login') === undefined) {
+    tour.addStep('welcome', {
+       text: ['Welcome to the Viewflow Demo',
+              'Start with "Admin" user to get<br/> access to all flows'],
+       classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+       attachTo: '.nav-wrapper bottom'
+    });
+    $.cookie('examples.first_login', true);
+}
+
+
+{% if user.is_anonymous %}
+tour.addStep('login', {
+  text: ['Use dropdown to login under any demo user'],
+  classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+  attachTo: {element: '#login_as_menu', on: 'left'},
+  tetherOptions: {offset: '-10px 30px'},
+  classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text z-index-1000',
+  buttons: []
+});
+{% endif %}
+
+{% if user.username == 'shipment/worker' %}
+if($.cookie('examples.shipment/worker') === undefined) {
+    tour.addStep('shipment/worker', {
+      title: 'Welcome, Shipment/Worker',
+      text: ['You have access to Shipment Process',
+             'You can work on <b>"Package goods"</b> and <b>"Move package"</b> tasks'],
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+      attachTo: {element: 'li a[href="/workflow/"]', on: 'right'},
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text z-index-1000',
+      buttons: [{ text: 'OK', action: tour.next }],
+      tetherOptions: {offset: '0px -20px 0px 0px'}
+    });
+    $.cookie('examples.shipment/worker', true);
+}
+{% endif %}
+
+{% if user.username == 'shipment/manager' %}
+if($.cookie('examples.shipment/manager') === undefined) {
+    tour.addStep('shipment/manager', {
+      title: 'Welcome, Shipment/Manager',
+      text: ['You have access to Shipment Process',
+             'You can work on <b>"Take extra insurance"</b> tasks'],
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+      attachTo: {element: 'li a[href="/workflow/"]', on: 'right'},
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text z-index-1000',
+      buttons: [{ text: 'OK', action: tour.next }],
+      tetherOptions: {offset: '0px -20px 0px 0px'}
+    });
+    $.cookie('examples.shipment/manager', true);
+}
+{% endif %}
+
+{% if user.username == 'shipment/clerk' %}
+if($.cookie('examples.shipment/clerk') === undefined) {
+    tour.addStep('shipment/clerk', {
+      title: 'Welcome, Shipment/Clerk',
+      text: ['You have access to Shipment Process',
+             'You can <b>start</b> the Shipment process, work on <b>"Decide shipment type"</b>',
+             '<b>"Set delivery mode"</b>, <b>"Request quotes"</b>, <b>"Check insurance"</b>,',
+             'and <b>"Fill post label"</b> tasks'],
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+      attachTo: {element: 'li a[href="/workflow/"]', on: 'right'},
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text z-index-1000',
+      buttons: [{ text: 'OK', action: tour.next }],
+      tetherOptions: {offset: '0px -20px 0px 0px'}
+    });
+    $.cookie('examples.shipment/clerk', true);
+}
+{% endif %}
+
+{% if user.username == 'helloworld/manager' %}
+if($.cookie('examples.helloworld/manager') === undefined) {
+    tour.addStep('helloworld/manager', {
+      title: 'Welcome, Helloworld/Manager',
+      text: ['You have access to "Hello, world" Process',
+             'You can <b>"Approve"</b> "Hello, world" requests'],
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+      attachTo: {element: 'li a[href="/workflow/"]', on: 'right'},
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text z-index-1000',
+      buttons: [{ text: 'OK', action: tour.next }],
+      tetherOptions: {offset: '0px -20px 0px 0px'}
+    });
+    $.cookie('examples.helloworld/manager', true);
+}
+{% endif %}
+
+{% if user.username == 'helloworld/employee' %}
+if($.cookie('examples.helloworld/employee') === undefined) {
+    tour.addStep('helloworld/employee', {
+      title: 'Welcome, Helloworld/Employee',
+      text: ['You have access to "Hello, world" Process',
+             'You can <b>start</b> "Hello, world" requests process'],
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+      attachTo: {element: 'li a[href="/workflow/"]', on: 'right'},
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text z-index-1000',
+      buttons: [{ text: 'OK', action: tour.next }],
+      tetherOptions: {offset: '0px -20px 0px 0px'}
+    });
+    $.cookie('examples.helloworld/employee', true);
+}
+{% endif %}
+
+{% if user.username == 'admin' %}
+if($.cookie('examples.admin') === undefined) {
+    tour.addStep('admin', {
+      title: 'Welcome, System administrator',
+      text: ['You have access to any process and tasks',
+             'Also you have rights to the data administration interface'],
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+      attachTo: {element: 'li a[href="/workflow/"]', on: 'right'},
+      classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text z-index-1000',
+      buttons: [{ text: 'OK', action: tour.next }],
+      tetherOptions: {offset: '0px -20px 0px 0px'},
+    });
+    $.cookie('examples.admin', true);
+}
+{% endif %}
+
+tour.start();
+</script>

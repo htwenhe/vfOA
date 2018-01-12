@@ -1,0 +1,48 @@
+{% extends 'employees/base_module.html' %}
+{% load i18n material_frontend %}
+
+{% block breadcrumbs_items %}
+<a href="{% url employee|frontend_urlname:'list' %}">{{ employee|verbose_name_plural|title }}</a>
+<a href="{% url employee|frontend_urlname:'detail' employee.pk %}">{{ employee }}</a>
+<a class="active">{% trans 'Change Salary' %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="left-panel">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-title">{% trans 'Salary History' %}</div>
+            <canvas id="salaryChart" ></canvas>
+
+            <script type="text/javascript">
+              new Chart($("#salaryChart"), {
+                type: 'line',
+                data: {{ salary_history|safe }},
+                options: {
+                  scales: {
+                    xAxes: [{
+                      type: 'time',
+                    }]
+                  }
+                }
+              });
+            </script>
+        </div>
+    </div>
+</div>
+<div class="right-panel">
+    <div class="card">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="card-content">
+                {% form %}
+                {% part form.salary prefix %}<i class="material-icons prefix">attach_money</i>{% endpart %}
+                {% endform %}
+            </div>
+            <div class="card-action right-align">
+                <button class=" btn" type="submit">{% trans 'Set new Salary' %}</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

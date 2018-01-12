@@ -1,0 +1,4 @@
+django-filter==1.1.0
+django-formtools==2.1
+django-material==1.1.1
+django-viewflow==1.1.0

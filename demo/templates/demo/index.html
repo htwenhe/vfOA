@@ -1,0 +1,36 @@
+{% extends 'demo/base_module.html' %}
+
+{% block content %}
+<div class="row">    
+    <div class="col l8 m12">
+        <div class="card-panel form-card">
+            <h3>vfOA demo</h3>
+            <a href="https://github.com/viewflow/viewflow" target="_blank"><i class="glyphicon glyphicon-edit"></i> Viewflow  Source code on Github</a>
+            <br/>
+            <a href="https://github.com/viewflow/viewflow" target="_blank"><i class="glyphicon glyphicon-edit"></i>vfOA Source code on Github</a>
+            <ul>
+                <li>
+                    <a href="/leave/leave/">请假</a>  -一个简单的请假示例
+                </li>
+                <li>
+                    <a href="/workflow/countersign/cs/" >会签</a> - 多人并行会签
+                </li>
+                <li>
+                    <a href="/workflow/customnode/dynamicsplit/">Dynamic split</a> - 可动态设置拆分节点的个数，很实用。
+                </li>
+                <li>
+                    <a href="/workflow/bloodtest/bloodtest/">bloodtest</a> - 自定义UI示例,wizard 多页面。
+                </li>
+            </ul>
+            {% if not user.is_authenticated %}Please, log in to continue...{% endif %}
+        </div>
+    </div>
+    <div class="col l4 m12">
+        <div class="card-panel">
+            <div class="card-title">VfOA</div>
+            <p>基于Viewflow的OA演示系统，能够快速实现数据的CURD以及流程处理，可开发轻量级OA/CRM/ERP等系统</p>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
